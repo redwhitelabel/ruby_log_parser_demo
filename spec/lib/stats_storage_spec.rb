@@ -1,7 +1,6 @@
 require "faker"
-require "spec/spec_helper"
-require "src/stats_storage"
-require "src/stats_model"
+require "lib/stats_storage"
+require "lib/stats_model"
 
 RSpec.describe StatsStorage do
   describe "#log_visit" do

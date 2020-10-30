@@ -1,6 +1,8 @@
+require 'set'
+
 class StatsModel
   def initialize(url:, ip:)
-    @clients = [ip]
+    @clients = Set[ip]
     @url = url
     @unique_views = 1
     @total_views = 1
@@ -9,9 +11,9 @@ class StatsModel
   def add_visit(ip)
     @total_views += 1
 
-    return if @clients.include?(ip)
+    return if clients.member?(ip)
 
-    @clients.push(ip)
+    clients.add(ip)
     @unique_views += 1
   end
 

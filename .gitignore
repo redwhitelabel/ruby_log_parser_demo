@@ -1,0 +1,10 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea
+
+# Ignore Byebug command history file.
+.byebug_history
+
+## Environment normalization:
+/.bundle/
+/vendor/bundle
+coverage

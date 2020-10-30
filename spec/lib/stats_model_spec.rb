@@ -1,6 +1,5 @@
 require "faker"
-require "spec/spec_helper"
-require "src/stats_model"
+require "lib/stats_model"
 
 RSpec.describe StatsModel do
   describe "#add_visit" do

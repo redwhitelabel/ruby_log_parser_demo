@@ -1,11 +1,10 @@
-require "spec/spec_helper"
-require "src/parser"
-require "src/errors"
+require "lib/parser"
+require "lib/errors"
 
 RSpec.describe Parser do
   describe "#call" do
     context "with existing file" do
-      let(:file_path) { File.dirname(__FILE__) + '/../resources/sample.log'}
+      let(:file_path) { File.dirname(__FILE__) + '/../fixtures/sample.log'}
       let(:expected_output) do
         ["/help_page/1 5 views",
          "/contact 2 views",
@@ -28,7 +27,7 @@ RSpec.describe Parser do
     end
 
     context "when file is missing" do
-      let(:file_path) { File.dirname(__FILE__) + '/../resources/missing_file.log' }
+      let(:file_path) { File.dirname(__FILE__) + '/../fixtures/missing_file.log' }
       subject(:app) { described_class.new(file_path: file_path) }
 
       it "throws MissingFileError", :aggregate_failures do
