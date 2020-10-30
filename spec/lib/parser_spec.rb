@@ -4,14 +4,16 @@ require "lib/errors"
 RSpec.describe Parser do
   describe "#call" do
     context "with existing file" do
-      let(:file_path) { File.dirname(__FILE__) + '/../fixtures/sample.log'}
+      let(:file_path) { File.dirname(__FILE__) + '/../fixtures/sample.log' }
       let(:expected_output) do
-        ["/help_page/1 5 views",
+        ["Total views",
+         "/help_page/1 5 views",
          "/contact 2 views",
          "/home 2 views",
          "/about/2 1 views",
          "/index 1 views",
          "/about 1 views",
+         "Unique views",
          "/help_page/1 5 unique views",
          "/home 2 unique views",
          "/contact 1 unique views",

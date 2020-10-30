@@ -8,9 +8,11 @@ class StatsStorage
   def log_visit(url:, ip:)
     return if url.empty? || ip.empty?
 
-    return storage[url] = StatsModel.new(url: url, ip: ip) unless storage.include?(url)
-
-    storage[url].add_visit(ip)
+    if storage.include?(url)
+      storage[url].add_visit(ip)
+    else
+      storage[url] = StatsModel.new(url: url, ip: ip)
+    end
   end
 
   def paths_by_total_views

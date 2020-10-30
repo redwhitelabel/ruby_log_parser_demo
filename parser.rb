@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
-$LOAD_PATH.unshift(File.expand_path(File.dirname(__FILE__))) unless $LOAD_PATH.include?(File.expand_path(File.dirname(__FILE__)))
+path = File.expand_path(File.dirname(__FILE__))
+$LOAD_PATH.unshift(path) unless $LOAD_PATH.include?(path)
 
 require 'lib/parser'
 

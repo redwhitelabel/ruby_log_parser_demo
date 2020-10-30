@@ -7,20 +7,20 @@ class Parser
     new(**args).call
   end
 
-  def initialize(**kwargs)
-    @file_path = kwargs.delete(:file_path)
+  def initialize(file_path:)
+    @file_path = file_path
   end
 
   def call
+    raise Errors::MissingFileError, "Please provide file name" if file_path.nil?
     raise Errors::MissingFileError, "File #{file_path} does not exist" unless File.exist?(file_path)
 
     File.foreach(file_path) do |line|
-      log_entry_array = line.split(" ").compact
+      log_entry_array = line.split.compact
       stats_storage.log_visit(url: log_entry_array.first, ip: log_entry_array.last)
     end
 
-    stats_storage_presenter.total_views
-    stats_storage_presenter.unique_views
+    stats_storage_presenter.present
   end
 
   private
